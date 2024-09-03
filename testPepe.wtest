@@ -3,8 +3,74 @@ import pepe.*
 describe "Sueldo Pepe" {
 	
 	test "Test 1" {
-		//TODO: Implementame
+		
+        pepe.categoria(cadete)
+        pepe.bonoPorResultado(montoFijo)
+        pepe.bonoPorPresentismo(normal)
+        pepe.faltas(3)
+        assert.equals(20800, pepe.sueldo())
+
+
 	}
 
-	
+    test "Test 2" {
+        pepe.categoria(gerente)
+        pepe.bonoPorResultado(porcentaje)
+        pepe.bonoPorPresentismo(nulo)
+        assert.equals(16500, pepe.sueldo())
+    }
+
+	test "Test 3"{
+        pepe.categoria(cadete)
+        pepe.bonoPorResultado(porcentaje)
+        pepe.bonoPorPresentismo(normal)
+        assert.equals(24000, pepe.sueldo())
+    }
+
+    test "Test 4"{
+        pepe.categoria(cadete)
+        pepe.bonoPorResultado(porcentaje)
+        pepe.bonoPorPresentismo(normal)
+        pepe.faltas(1)
+        assert.equals(23000, pepe.sueldo())
+    }
+}
+
+describe "test initialize" {
+
+    method initialize(){
+        pepe.categoria(cadete)
+        pepe.bonoPorResultado(porcentaje)
+        pepe.bonoPorPresentismo(normal)
+    }
+    test "Test 3" {
+        assert.equals(24000, pepe.sueldo())
+    }
+
+    test "Test 4"{
+        pepe.faltas(1)
+        assert.equals(23000, pepe.sueldo())
+  }
+}
+
+describe "Pepe, roque y ernesto" {
+
+    test "Test 1"{
+        medioTiempo.categoriaBase(cadete)
+        
+        pepe.categoria(cadete)
+        pepe.bonoPorPresentismo(demagogico)
+        pepe.bonoPorResultado(porcentaje)
+        pepe.faltas(1)
+
+
+        roque.bonoPorResultado(montoFijo)
+
+        ernesto.companero(pepe)
+        ernesto.bonoPorPresentismo(ajuste)
+
+        assert.equals(11500, pepe.sueldo())
+        assert.equals(37800, roque.sueldo())
+        assert.equals(10100, ernesto.sueldo())
+    }
 }
